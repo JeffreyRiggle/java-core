@@ -9,7 +9,7 @@ import java.nio.file.Files;
 //TODO: Consider adding async save.
 /**
 * 
-* @author Jeffrey Riggle
+* @author Jeff Riggle
 *
 */
 public class UnformattedFileGenerator {

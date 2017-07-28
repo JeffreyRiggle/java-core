@@ -11,7 +11,7 @@ import org.xml.sax.SAXException;
 
 /**
  * 
- * @author Jeffrey Riggle
+ * @author Jeff Riggle
  *
  */
 public class XmlManager {
