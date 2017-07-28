@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import core.javafx.splashscreen.*?>
+
+<fx:root type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml">
+	<GridPane 
+		AnchorPane.topAnchor="0.0" 
+		AnchorPane.leftAnchor="0.0" 
+		AnchorPane.rightAnchor="0.0"
+		AnchorPane.bottomAnchor="0.0"
+		fx:id="grid">
+		<padding>
+         	<Insets bottom="10.0" left="25.0" right ="10.0" top="10.0"/>
+     	</padding>
+		<columnConstraints>
+          <ColumnConstraints hgrow="ALWAYS" />
+    	</columnConstraints>
+    	<rowConstraints>
+    		<RowConstraints minHeight="150.0" vgrow="ALWAYS" />
+    		<RowConstraints minHeight="50.0" vgrow="ALWAYS" />
+    	</rowConstraints>
+    	<VBox GridPane.rowIndex="0" GridPane.columnIndex="0" alignment="center_left" spacing="15">
+    		<Label fx:id="applicationName">
+    			<font>
+    				<Font name="Arial Black" size="18.0" />
+    			</font> 
+    		</Label>
+    		<Label fx:id="version">
+    			<font>
+    				<Font name="Arial Black" size="11.0" />
+    			</font>
+    		</Label>
+    	</VBox>
+    	<VBox GridPane.rowIndex="1" GridPane.columnIndex="0" alignment="center_left">
+    		<Label fx:id="state">
+    			<font>
+    				<Font name="Arial Black" size="11.0" />
+    			</font>
+    		</Label>
+    	</VBox>
+	</GridPane>
+</fx:root>

@@ -1,0 +1,3 @@
+LanguageCode;=;ja-JP
+greeting;=;konichiwa
+farewell;=;sayonara
