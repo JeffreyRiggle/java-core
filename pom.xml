@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.ilusr.core</groupId>
   <artifactId>Core</artifactId>
-  <version>1.2.0-SNAPSHOT</version>
+  <version>2.0.0</version>
   <packaging>jar</packaging>
   <name>Core</name>
   <description>The core libraries for ilusr</description>
@@ -10,13 +10,28 @@
   	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-context</artifactId>
-  		<version>4.2.5.RELEASE</version>
+  		<version>5.1.8.RELEASE</version>
   	</dependency>
   	<dependency>
   		<groupId>junit</groupId>
   		<artifactId>junit</artifactId>
   		<version>4.12</version>
   	</dependency>
+	<dependency>
+		<groupId>org.openjfx</groupId>
+		<artifactId>javafx-controls</artifactId>
+		<version>11.0.2</version>
+	</dependency>
+	<dependency>
+		<groupId>org.openjfx</groupId>
+		<artifactId>javafx-fxml</artifactId>
+		<version>11.0.2</version>
+	</dependency>
+	<dependency>
+		<groupId>org.openjfx</groupId>
+		<artifactId>javafx-swing</artifactId>
+		<version>11.0.2</version>
+	</dependency>
   </dependencies>
   <distributionManagement>
   	<repository>
@@ -29,12 +44,9 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
+        <version>3.8.0</version>
         <configuration>
-          <verbose>true</verbose>
-          <source>1.8</source>
-          <target>1.8</target>
-          <showWarnings>true</showWarnings>
+          <release>11</release>
         </configuration>
       </plugin>
       <plugin>
@@ -65,7 +77,7 @@
   		<plugin>
   			<groupId>org.apache.maven.plugins</groupId>
   			<artifactId>maven-javadoc-plugin</artifactId>
-  			<version>2.10.4</version>
+  			<version>3.1.1</version>
   			<configuration>
   				<show>protected</show>
   				<nohelp>true</nohelp>

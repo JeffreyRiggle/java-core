@@ -1,0 +1,9 @@
+{
+    "index": "About",
+    "api": "java",
+    "pages": {
+        "About": "About.md",
+        "Installation": "Installation.md",
+        "Technologies": "Technology.md"
+    }
+}
