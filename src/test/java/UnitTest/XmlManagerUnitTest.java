@@ -99,17 +99,6 @@ public class XmlManagerUnitTest {
 			if (!saveFile2.exists()) {
 				Assert.fail("File not found");
 			}
-			//TODO: make sure its contents are right.
-			
-			manager.saveLocation(_file3);
-			manager.save();
-			
-			File saveFile3 = new File(_file3);
-			
-			if (!saveFile3.exists()) {
-				Assert.fail("File not found");
-			}
-			//TODO: make sure its contents are right.
 		} catch (Exception e) {
 			fail(e.toString());
 		}
@@ -119,6 +108,18 @@ public class XmlManagerUnitTest {
 	public void testLoadXml() {
 		try {
 			instantiate();
+
+			XmlManager saveManager = new XmlManager(_file3, _generator, _reader);
+			Element child = saveManager.generator().createElement(_element1Name);
+			saveManager.generator().addElementToRoot(child);
+			saveManager.save();
+			
+			File saveFile3 = new File(_file3);
+			
+			if (!saveFile3.exists()) {
+				Assert.fail("File not found");
+			}
+
 			XmlManager manager = new XmlManager(_file1, _generator, _reader);
 			
 			manager.load();
