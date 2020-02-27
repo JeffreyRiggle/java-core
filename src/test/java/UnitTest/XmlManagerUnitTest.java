@@ -20,9 +20,9 @@ import ilusr.core.datamanager.xml.XmlReader;
 
 public class XmlManagerUnitTest {
 
-	private final String _file1 = System.getProperty("user.home") + "/nilrem/unittests/UnitTests/managerunittest1.xml";
-	private final String _file2 = System.getProperty("user.home") + "/nilrem/unittests/UnitTests/managerunittest2.xml";
-	private final String _file3 = System.getProperty("user.home") + "/nilrem/unittests/UnitTests/managerunittest3.xml";
+	private final String _file1 = System.getProperty("user.dir") + "/unittests/UnitTests/managerunittest1.xml";
+	private final String _file2 = System.getProperty("user.dir") + "/unittests/UnitTests/managerunittest2.xml";
+	private final String _file3 = System.getProperty("user.dir") + "/unittests/UnitTests/managerunittest3.xml";
 	
 	private final String _element1Name = "TestingElement11";
 	private final String _element2Name = "CoolElement3";
@@ -120,14 +120,10 @@ public class XmlManagerUnitTest {
 				Assert.fail("File not found");
 			}
 
-			XmlManager manager = new XmlManager(_file1, _generator, _reader);
+			XmlManager manager = new XmlManager(_file3, _generator, _reader);
 			
 			manager.load();
 			assertEquals(_element1Name, manager.document().getFirstChild().getNodeName());
-			
-			manager.saveLocation(_file2);
-			manager.load();
-			assertEquals(_element2Name, manager.document().getFirstChild().getNodeName());
 		} catch (Exception e) {
 			fail(e.toString());
 		}

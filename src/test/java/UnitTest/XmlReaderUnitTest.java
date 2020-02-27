@@ -14,8 +14,8 @@ import ilusr.core.datamanager.xml.XmlReader;
 
 public class XmlReaderUnitTest {
 
-	private final String _fileLocation1 = System.getProperty("user.home") + "/nilrem/unittests/UnitTests/readerTest1.xml";
-	private final String _fileLocation2 = System.getProperty("user.home") + "/nilrem/unittests/UnitTests/readerTest2.xml";
+	private final String _fileLocation1 = System.getProperty("user.dir") + "/unittests/UnitTests/readerTest1.xml";
+	private final String _fileLocation2 = System.getProperty("user.dir") + "/unittests/UnitTests/readerTest2.xml";
 	
 	private final String _file1Contents = "ReaderTest";
 	private final String _file2Contents = "ReaderTest23";
