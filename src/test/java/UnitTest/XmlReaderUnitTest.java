@@ -7,6 +7,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.Arrays;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,6 +39,25 @@ public class XmlReaderUnitTest {
 			{
 				file2.createNewFile();
 				Files.write(file2.toPath(), Arrays.asList(_file2FullContents), Charset.forName("UTF-8"));
+			}
+		} catch (Exception e) {
+			fail(e.toString());
+		}
+	}
+
+	@After
+	public void deleteTestFiles() {
+		try {
+			File file1 = new File(_fileLocation1);
+			if (file1.exists())
+			{
+				file1.delete();
+			}
+			
+			File file2 = new File(_fileLocation2);
+			if (file2.exists())
+			{
+				file2.delete();
 			}
 		} catch (Exception e) {
 			fail(e.toString());
