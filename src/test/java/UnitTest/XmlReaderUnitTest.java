@@ -24,17 +24,16 @@ public class XmlReaderUnitTest {
 	private final String _file1FullContents = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><ReaderTest/>";
 	private final String _file2FullContents = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><ReaderTest23/>";
 	
-	@Before
-	public void createTestFiles() {
+	public void createTestFiles(String seed) {
 		try {
-			File file1 = new File(_fileLocation1);
+			File file1 = new File(_fileLocation1 + seed);
 			if (!file1.exists())
 			{
 				file1.createNewFile();
 				Files.write(file1.toPath(), Arrays.asList(_file1FullContents), Charset.forName("UTF-8"));
 			}
 			
-			File file2 = new File(_fileLocation2);
+			File file2 = new File(_fileLocation2 + seed);
 			if (!file2.exists())
 			{
 				file2.createNewFile();
@@ -44,32 +43,14 @@ public class XmlReaderUnitTest {
 			fail(e.toString());
 		}
 	}
-
-	@After
-	public void deleteTestFiles() {
-		try {
-			File file1 = new File(_fileLocation1);
-			if (file1.exists())
-			{
-				file1.delete();
-			}
-			
-			File file2 = new File(_fileLocation2);
-			if (file2.exists())
-			{
-				file2.delete();
-			}
-		} catch (Exception e) {
-			fail(e.toString());
-		}
-	}
 	
 	@Test
 	public void testCreateXmlReader() {
 		try {
-			XmlReader reader = new XmlReader(_fileLocation1);
+			createTestFiles("createReader");
+			XmlReader reader = new XmlReader(_fileLocation1 + "createReader");
 
-			assertEquals(_fileLocation1, reader.fileLocation());
+			assertEquals(_fileLocation1 + "createReader", reader.fileLocation());
 		} catch (Exception e) {
 			fail(e.toString());
 		}
@@ -78,12 +59,13 @@ public class XmlReaderUnitTest {
 	@Test
 	public void testFileLocation() {
 		try {
-			XmlReader reader = new XmlReader(_fileLocation1);
+			createTestFiles("fileLocation");
+			XmlReader reader = new XmlReader(_fileLocation1 + "fileLocation");
 
-			assertEquals(_fileLocation1, reader.fileLocation());
+			assertEquals(_fileLocation1 + "fileLocation", reader.fileLocation());
 			
-			reader.fileLocation(_fileLocation2);
-			assertEquals(_fileLocation2, reader.fileLocation());
+			reader.fileLocation(_fileLocation2 + "fileLocation");
+			assertEquals(_fileLocation2 + "fileLocation", reader.fileLocation());
 		} catch (Exception e) {
 			fail(e.toString());
 		}
@@ -92,11 +74,12 @@ public class XmlReaderUnitTest {
 	@Test
 	public void testReadFile() {
 		try {
-			XmlReader reader = new XmlReader(_fileLocation1);
+			createTestFiles("readFile");
+			XmlReader reader = new XmlReader(_fileLocation1 + "readFile");
 			reader.read();
 			assertEquals(_file1Contents, reader.document().getFirstChild().getNodeName());
 			
-			reader.fileLocation(_fileLocation2);
+			reader.fileLocation(_fileLocation2 + "readFile");
 			reader.read();
 			assertEquals(_file2Contents, reader.document().getFirstChild().getNodeName());
 			
