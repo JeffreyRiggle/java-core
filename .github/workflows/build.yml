@@ -23,6 +23,6 @@ jobs:
               env:
                 TOKEN: ${{ secrets.GITHUBTOKEN }}
               run: |
-                echo "<settings><servers><server><id>github</id><username>$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $1}')</username><password>\${env.TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
+                echo "<settings><servers><server><id>github</id><username>JeffreyRiggle</username><password>\${env.TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
                 REPO="gh::default::https://maven.pkg.github.com/${GITHUB_REPOSITORY}"
-                mvn deploy -DaltReleaseDeploymentRepository="${REPO}" -DaltSnapshotDeploymentRepository="${REPO}"
+                mvn deploy
