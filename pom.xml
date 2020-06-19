@@ -35,9 +35,9 @@
   </dependencies>
   <distributionManagement>
   	<repository>
-  		<id>jriggle-mvn-repo</id>
-  		<name>AWS Maven Repo</name>
-  		<url>https://s3.us-east-2.amazonaws.com/jriggle-mvn-repo/snapshot</url>
+  		<id>github</id>
+  		<name>Jeffrey Riggle Apache Maven Packages</name>
+  		<url>https://maven.pkg.github.com/JeffreyRiggle/java-core</url>
   	</repository>
   </distributionManagement>
   <build>
