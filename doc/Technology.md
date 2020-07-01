@@ -1,5 +1,5 @@
 # Technology
-LogRunner was created using
+Java-core was created using
 
 * openjdk
 * maven
