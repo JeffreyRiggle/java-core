@@ -1,0 +1,68 @@
+on: 
+    push:
+        branches:
+            - master
+
+name: Create Release
+
+jobs:
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+            
+            - name: Set up JDK
+              uses: actions/setup-java@v1
+              with:
+                java-version: '11'
+
+            - name: Setup Maven
+              env:
+                TOKEN: ${{ secrets.GITHUBTOKEN }}
+                USERNAME: JeffreyRiggle
+              run: |
+                envsubst < settings.tmpl > ~/.m2/settings.xml
+            - name: Build with Maven
+              run: mvn install -Drevision="${GITHUB_RUN_NUMBER}"
+            
+            - name: Copy Release
+              run: |
+                tar -czvf apidocs.tar.gz target/apidocs
+                zip -r apidocs.zip . target/apidocs
+
+            - name: Create Release
+              id: create_release
+              uses: actions/create-release@v1
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                tag_name: 2.0.${{ github.run_number }}
+                release_name: Release 2.0.${{ github.run_number }}
+                body: |
+                  New release
+                draft: false
+                prerelease: false
+            
+            - name: Upload Api zip
+              id: upload_api_zip
+              uses: actions/upload-release-asset@v1
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                upload_url: ${{ steps.create_release.outputs.upload_url }}
+                asset_path: ./apidocs.zip
+                asset_name: apidocs.zip
+                asset_content_type: application/java-archive
+
+            - name: Upload Api tar
+              id: upload_api_tar
+              uses: actions/upload-release-asset@v1
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                upload_url: ${{ steps.create_release.outputs.upload_url }}
+                asset_path: ./apidocs.tar.gz
+                asset_name: apidocs.tar.gz
+                asset_content_type: application/java-archive
