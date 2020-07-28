@@ -29,8 +29,9 @@ jobs:
             
             - name: Copy Release
               run: |
-                tar -czvf apidocs.tar.gz target/apidocs
-                zip -r apidocs.zip . target/apidocs
+                cp -r target/apidocs apidocs
+                tar -czvf apidocs.tar.gz apidocs
+                zip -r apidocs.zip apidocs
 
             - name: Create Release
               id: create_release
