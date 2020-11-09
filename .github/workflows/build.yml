@@ -19,10 +19,15 @@ jobs:
             - name: Build with Maven
               run: mvn test
             
+            - name: Setup Maven
+              env:
+                TOKEN: ${{ secrets.GITHUBTOKEN }}
+                USERNAME: JeffreyRiggle
+              run: |
+                envsubst < settings.tmpl > ~/.m2/settings.xml
+            
             - name: Deploy
               env:
                 TOKEN: ${{ secrets.GITHUBTOKEN }}
               run: |
-                echo "<settings><servers><server><id>github</id><username>JeffreyRiggle</username><password>\${env.TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
-                REPO="gh::default::https://maven.pkg.github.com/${GITHUB_REPOSITORY}"
                 mvn deploy -Drevision="${GITHUB_RUN_NUMBER}"
