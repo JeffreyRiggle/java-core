@@ -54,7 +54,7 @@ jobs:
                 git config --local user.name "$(git log --format='%an' HEAD^!)"
                 git add pom.xml
                 git commit -m "Auto Version"
-                gut push
+                git push
 
             - name: Deploy
               if: startsWith(github.event.head_commit.message, 'Auto Version') != true
