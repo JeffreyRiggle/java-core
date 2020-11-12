@@ -50,6 +50,8 @@ jobs:
                 contents=`cat pom.xml`
                 echo "${contents//<version>$version</<version>$newVersion<}" > pom.xml
                 
+                git config --local user.email "$(git log --format='%ae' HEAD^!)"
+                git config --local user.name "$(git log --format='%an' HEAD^!)"
                 git add pom.xml
                 git commit -m "Auto Version"
                 gut push
