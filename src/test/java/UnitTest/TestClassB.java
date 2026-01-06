@@ -1,5 +1,3 @@
-package UnitTest;
-
 public class TestClassB {
 
 	private String initVal;

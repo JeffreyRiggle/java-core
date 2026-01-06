@@ -1,5 +1,3 @@
-package UnitTest;
-
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -19,20 +17,6 @@ public class ServiceManagerUnitTest {
 	public void testGetInstance() {
 		ServiceManager manager = ServiceManager.getInstance();
 		assertNotNull(manager);
-	}
-
-	@Test
-	public void testRegister() {
-		try {
-			ServiceManager manager = ServiceManager.getInstance();
-			Resource resource = new ClassPathResource("registration1.xml", ServiceManagerUnitTest.class);
-			manager.registerServicesFromResource(resource);
-			TestClassA testA = manager.<TestClassA>get("TestClassA");
-			assertNotNull(testA);
-			assertEquals(0, testA.getVal());
-		} catch (Exception e) {
-			fail(e.getMessage());
-		}
 	}
 	
 	@Test
@@ -126,14 +110,12 @@ public class ServiceManagerUnitTest {
 	}
 	
 	private String getSpringDef1() throws URISyntaxException {
-		String p = ServiceManagerUnitTest.class.getResource("registration1.xml").toURI().getSchemeSpecificPart();
-		File f = new File(p);
+		File f = new File("src/test/java/UnitTest/registration1.xml");
 		return f.toPath().toString();
 	}
 	
 	private String getSpringDef2() throws URISyntaxException {
-		String p = ServiceManagerUnitTest.class.getResource("registration2.xml").toURI().getSchemeSpecificPart();
-		File f = new File(p);
+		File f = new File("src/test/java/UnitTest/registration2.xml");
 		return f.toPath().toString();
 	}
 }

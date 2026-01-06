@@ -1,5 +1,3 @@
-package UnitTest;
-
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -22,7 +20,7 @@ public class LanguageManagerUnitTest {
 		LanguageManager manager = new LanguageManager();
 		
 		try {
-			manager.addLanguagePack(new File(getClass().getResource("enLanguageFile.txt").toURI().getSchemeSpecificPart()));
+			manager.addLanguagePack(new File("src/test/java/UnitTest/enLanguageFile.txt"));
 			assertEquals("Hello", manager.getValue("greeting"));
 		} catch (Exception e) {
 			fail(e.getMessage());
@@ -34,8 +32,8 @@ public class LanguageManagerUnitTest {
 		LanguageManager manager = new LanguageManager();
 		
 		try {
-			manager.addLanguagePack(new File(getClass().getResource("enLanguageFile.txt").toURI().getSchemeSpecificPart()));
-			manager.addLanguagePack(new File(getClass().getResource("jaLanguageFile.txt").toURI().getSchemeSpecificPart()));
+			manager.addLanguagePack(new File("src/test/java/UnitTest/enLanguageFile.txt"));
+			manager.addLanguagePack(new File("src/test/java/UnitTest/jaLanguageFile.txt"));
 			manager.setLanguage("ja-JP");
 			assertEquals("konichiwa", manager.getValue("greeting"));
 		} catch (Exception e) {
