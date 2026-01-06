@@ -1,5 +1,3 @@
-package UnitTest;
-
 public class TestClassA {
 
 	private int testVal;
